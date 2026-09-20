@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "motion/react";
 import logo from "../assets/prepagent.svg";
 import { FaLongArrowAltRight } from "react-icons/fa";
+import LoginModel from "../components/LoginModel";
 
 const Home = () => {
+  const [showLogin,setShowLogin]=useState(false)
   return (
+
     <div className="bg-white text-[#0A0A0A] font-sans min-h-screen overflow-x-hidden">
       
       <motion.nav
@@ -28,7 +31,9 @@ const Home = () => {
           </span>
 
         </div>
-        <motion.button whileHover={{scale:1.04}} 
+        <motion.button 
+        onClick={()=>setShowLogin(true)}
+        whileHover={{scale:1.04}} 
         whileTap={{scale:0.97}}
         className='bg-[#0A0A0A]/80 backdrop-blur-2xl text-white font-semibold border border-white/10 rounded-md px-3 py-2 text-xs cursor-pointer transition-all hover:border-white/20 shadow-[0_8px_24px_rgba(0,0,0,0.25)] flex items-center gap-2'>
         Log In <FaLongArrowAltRight />
@@ -40,6 +45,7 @@ const Home = () => {
       <section className="relative pt-20 pb-14 overflow-hidden bg-[#F8F9FA]">
 
       </section>
+      {showLogin && <LoginModel onClose={()=>setShowLogin(false)}/>}      
 
     </div>
   );

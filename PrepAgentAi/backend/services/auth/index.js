@@ -1,7 +1,11 @@
 import express from "express"
 import dotenv from "dotenv"
 import connectDB from "./configs/db.js"
-
+import  dns from "dns"
+dns.setServers([
+    '4.4.4.4',
+    '8.8.8.8'
+])
 import cookieParser from "cookie-parser"
 import authRouter from "./routes/auth.route.js";
 
